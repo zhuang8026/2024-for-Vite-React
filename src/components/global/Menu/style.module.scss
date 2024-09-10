@@ -5,9 +5,18 @@
     position: fixed;
     top: 0px;
     left: 0px;
+    font-size: 14px;
     padding: 16px 0 16px 16px;
     .menu-root {
-        background: linear-gradient(195deg, rgb(66, 66, 74), rgb(25, 25, 25));
+        // background: linear-gradient(195deg, rgb(66, 66, 74), rgb(25, 25, 25));
+        background: -webkit-radial-gradient(
+                0% 100%,
+                ellipse cover,
+                rgba(104, 128, 138, 0.4) 10%,
+                rgba(138, 114, 76, 0) 40%
+            ),
+            linear-gradient(to bottom, rgba(57, 173, 219, 0.25) 0%, rgba(42, 60, 87, 0.4) 100%),
+            linear-gradient(135deg, #670d10 0%, #092756 100%);
         color: #fff;
         box-shadow: none;
         overflow-y: auto;
@@ -67,7 +76,10 @@
                 padding: 16px;
                 li {
                     text-decoration: none;
-                    margin-bottom: 2px;
+                }
+                .menu-name {
+                    font-weight: bold;
+                    padding: 8px 0;
                 }
                 .menu-link {
                     border-radius: 5px;
@@ -76,7 +88,7 @@
                     align-items: center;
                     justify-content: flex-start;
                     padding-left: 12px;
-
+                    margin-bottom: 2px;
                     span {
                         padding: 12px;
                         color: #fff;

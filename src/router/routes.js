@@ -10,7 +10,7 @@ import Account from '@/view/User/Account';
 const routes = [
     {
         path: '/main',
-        title: 'Home',
+        title: 'Overall information',
         component: Home,
         exact: true,
         authRequired: false,
@@ -18,15 +18,15 @@ const routes = [
     },
     {
         path: '/user/account',
-        title: 'Account',
+        title: 'Sensor Time Log',
         component: Account,
         exact: true,
         authRequired: false,
-        layouts: ['footer', 'header']
+        layouts: ['menu', 'header']
     },
     {
         path: '/pageA',
-        title: 'PageA',
+        title: 'Equipment List',
         component: PageA,
         exact: true,
         authRequired: false,
@@ -34,11 +34,11 @@ const routes = [
     },
     {
         path: '/pageB',
-        title: 'PageB',
+        title: 'Gateway Management',
         component: PageB,
         exact: true,
         authRequired: false,
-        layouts: ['menu', 'footer', 'header']
+        layouts: ['menu', 'header']
     }
 ];
 

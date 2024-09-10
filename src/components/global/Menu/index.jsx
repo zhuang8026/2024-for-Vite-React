@@ -6,7 +6,7 @@ import DownloadingOutlinedIcon from '@mui/icons-material/DownloadingOutlined';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 // icon
-import logo from '@/assets/images/icon-logo.svg';
+// import logo from '@/assets/images/icon-logo.svg';
 
 // css
 import classes from './style.module.scss';
@@ -41,13 +41,18 @@ const Menu = ({ menuList }) => {
                 <div className={cx('menu-body')}>
                     <ul>
                         {menuList.map((item, index) => (
-                            <li
-                                className={cx('menu-link', currentPath === item.path && 'menu_active')}
-                                onClick={() => clickMenu(index, item.path)}
-                                key={index}
-                            >
-                                <DownloadingOutlinedIcon />
-                                <span>{item.name}</span>
+                            <li key={index}>
+                                <p className={cx('menu-name')}>{item.main}</p>
+                                {item.children.map((item, idx) => (
+                                    <div
+                                        className={cx('menu-link', currentPath === item.path && 'menu_active')}
+                                        onClick={() => clickMenu(index, item.path)}
+                                        key={idx}
+                                    >
+                                        <DownloadingOutlinedIcon />
+                                        <span>{item.name}</span>
+                                    </div>
+                                ))}
                             </li>
                         ))}
                     </ul>
@@ -61,7 +66,7 @@ const Menu = ({ menuList }) => {
                     </div>
                     <div className={cx('user')}>
                         <div className={cx('name')}>William.Chuang</div>
-                        <div className={cx('logout')}>
+                        <div className={cx('logout')} onClick={() => navigate('/login')}>
                             <span>Logout</span>
                             <ExitToAppIcon />
                         </div>

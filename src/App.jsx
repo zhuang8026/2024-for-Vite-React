@@ -1,18 +1,21 @@
-import React, { useState, Suspense, useEffect, useRef } from 'react';
+import React, { useState, Suspense, useEffect, useContext, useRef } from 'react';
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 
 // mui
 import DownloadingOutlinedIcon from '@mui/icons-material/DownloadingOutlined';
 
 // config
-import routes from './router/routes';
-import globalRoutes from './router/global_routes';
+import routes from '@/router/routes';
+import globalRoutes from '@/router/global_routes';
 
 // components
 import NoMatch from '@/components/global/NoMatch';
-import Menu from '@/components/ui/Menu';
-import Header from '@/components/ui/Header';
-import Footer from '@/components/ui/Footer';
+import Menu from '@/components/global/Menu';
+import Header from '@/components/global/Header';
+import Footer from '@/components/global/Footer';
+
+// global
+import { FullWindowAnimateProvider, FullPopWindow, useFullWindowAnimate } from '@/components/global/FullWindow';
 
 import '@/assets/scss/_all.scss';
 
@@ -21,26 +24,41 @@ import classes from './style.module.scss';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(classes);
 
-const menuList = [
-    {
-        name: '戰情室',
-        path: '/main',
-        icon: <DownloadingOutlinedIcon />
-    },
-    {
-        name: 'PageA',
-        path: '/pageA',
-        icon: <DownloadingOutlinedIcon />
-    },
-    {
-        name: 'PageB',
-        path: '/pageB',
-        icon: <DownloadingOutlinedIcon />
-    }
-];
 function App() {
     const [layouts, setLayouts] = useState([]);
     const [auth, setAuth] = useState(true);
+    const [menuList, setMenuList] = useState([
+        {
+            main: 'Dashboard',
+            children: [
+                {
+                    name: 'Overall information',
+                    path: '/main',
+                    icon: <DownloadingOutlinedIcon />
+                },
+                {
+                    name: 'Sensor Time Log',
+                    path: '/user/account',
+                    icon: <DownloadingOutlinedIcon />
+                }
+            ]
+        },
+        {
+            main: 'Equipment Management',
+            children: [
+                {
+                    name: 'Equipment List',
+                    path: '/pageA',
+                    icon: <DownloadingOutlinedIcon />
+                },
+                {
+                    name: 'Gateway Management',
+                    path: '/pageB',
+                    icon: <DownloadingOutlinedIcon />
+                }
+            ]
+        }
+    ]);
 
     const { pathname } = useLocation(); // Move useLocation here
 
@@ -74,7 +92,7 @@ function App() {
                     <Menu menuList={menuList} />
                 </Suspense>
             )}
-            <div className={cx('main')}>
+            <div className={cx(layouts.indexOf('menu') >= 0 ? 'main' : 'full')}>
                 {/* header */}
                 {layouts.indexOf('header') >= 0 ? (
                     <Suspense fallback={<></>}>
@@ -131,7 +149,10 @@ function App() {
 function AppWrapper() {
     return (
         <BrowserRouter>
-            <App />
+            <FullWindowAnimateProvider>
+                <App />
+                <FullPopWindow />
+            </FullWindowAnimateProvider>
         </BrowserRouter>
     );
 }

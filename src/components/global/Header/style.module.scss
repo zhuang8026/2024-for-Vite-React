@@ -9,10 +9,15 @@
     min-height: 4.6875rem;
     height: 10%;
     background: #fff;
+
+    padding: 10px;
+    margin-bottom: 16px;
+
     display: grid;
     align-items: center;
     flex-direction: column;
     flex-shrink: 0;
+
     box-sizing: border-box;
     border-radius: 0.75rem;
     box-shadow: rgba(255, 255, 255, 0.9) 0rem 0rem 0.0625rem 0.0625rem inset,

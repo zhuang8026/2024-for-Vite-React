@@ -5,7 +5,7 @@ import './style_module.scss';
 
 const PageA = () => {
     return (
-        <div className="home">
+        <div className="home1">
             <h1>PageA Page</h1>
         </div>
     );
