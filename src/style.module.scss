@@ -1,0 +1,13 @@
+#app {
+    background-color: rgb(240, 242, 245);
+}
+
+.main {
+    width: calc(100% - 260px);
+    height: 100%;
+    min-height: 100vh;
+    margin-left: 260px;
+    flex-grow: 1;
+    background-color: transparent;
+    padding: 16px 24px;
+}
