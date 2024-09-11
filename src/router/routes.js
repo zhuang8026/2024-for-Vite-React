@@ -9,6 +9,7 @@ import Account from '@/view/User/Account';
 
 const routes = [
     {
+        main: 'Dashboard',
         path: '/main',
         title: 'Overall information',
         component: Home,
@@ -17,6 +18,7 @@ const routes = [
         layouts: ['menu', 'footer', 'header']
     },
     {
+        main: 'Dashboard',
         path: '/user/account',
         title: 'Sensor Time Log',
         component: Account,
@@ -25,6 +27,7 @@ const routes = [
         layouts: ['menu', 'header']
     },
     {
+        main: 'Equipment Management',
         path: '/pageA',
         title: 'Equipment List',
         component: PageA,
@@ -33,6 +36,7 @@ const routes = [
         layouts: ['menu', 'footer', 'header']
     },
     {
+        main: 'Equipment Management',
         path: '/pageB',
         title: 'Gateway Management',
         component: PageB,

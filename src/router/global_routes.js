@@ -5,6 +5,7 @@ import Login from '@/view/User/Login';
 
 const routes = [
     {
+        main: '',
         path: '/login',
         title: 'Login',
         component: Login,

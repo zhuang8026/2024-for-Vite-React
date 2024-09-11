@@ -27,6 +27,11 @@ const Menu = ({ menuList }) => {
             pathname: `${path}`
         });
     };
+
+    useEffect(() => {
+        setCurrentPath(location.pathname);
+    }, [location]);
+
     return (
         <nav className={cx('nav-menu')}>
             <div className={cx('menu', 'menu-root')}>
@@ -66,10 +71,10 @@ const Menu = ({ menuList }) => {
                     </div>
                     <div className={cx('user')}>
                         <div className={cx('name')}>William.Chuang</div>
-                        <div className={cx('logout')} onClick={() => navigate('/login')}>
+                        {/* <div className={cx('logout')} onClick={() => navigate('/login')}>
                             <span>Logout</span>
                             <ExitToAppIcon />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
