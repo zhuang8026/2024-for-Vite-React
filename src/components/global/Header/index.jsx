@@ -1,8 +1,14 @@
 import React, { useState, Suspense, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 
+import { useTranslation } from 'react-i18next';
+
 import CircleNotificationsTwoToneIcon from '@mui/icons-material/CircleNotificationsTwoTone';
 import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
+
+// enum 映射
+import { COOKIE_NAME } from '@/assets/enum/enum';
+import { getCookie, setCookie } from '@/utils/cookie';
 
 import taiwan from '@/assets/images/taiwan.svg';
 import english from '@/assets/images/english.svg';
@@ -14,43 +20,74 @@ import classes from './style.module.scss';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(classes);
 
+const LANG_ICON = {
+    'en-US': english,
+    'zh-TW': taiwan
+};
+
+const LANG_LIST = [
+    {
+        name: 'English',
+        icon: english,
+        type: 'en-US'
+    },
+    {
+        name: '繁體中文',
+        icon: taiwan,
+        type: 'zh-TW'
+    }
+];
+
 const Header = () => {
+    const { t, i18n } = useTranslation();
     const { pathname } = useLocation(); // Move useLocation here
 
     const [visible, setVisible] = useState(false);
+    const [languageIcon, setLanguageIcon] = useState(english);
     const [head, setHead] = useState({
         main: '',
         child: ''
     });
 
+    // 切換語言並存入 cookie
+    const changeLanguage = lng => {
+        setVisible(!visible);
+        i18n.changeLanguage(lng);
+        setCookie(COOKIE_NAME.LANG, lng);
+        setLanguageIcon(LANG_ICON[lng]);
+    };
+
     useEffect(() => {
         const pathObj = routes.find(item => item.path === pathname);
         setHead({
-            main: pathObj.main,
-            child: pathObj.title
+            main: `menu.${pathObj.main}`,
+            child: `menu.${pathObj.title}`
         });
+
+        // 設定語言
+        let langIconName = getCookie(COOKIE_NAME.LANG) || 'en-US';
+        setLanguageIcon(LANG_ICON[langIconName]);
     }, [pathname]);
     return (
         <div className={cx('header')}>
             <div className={cx('title')}>
                 <p>
-                    {head.main} / {head.child}
+                    {t(head.main)} / {t(head.child)}
                 </p>
-                {head.child}
+                {t(head.child)}
             </div>
             <div className={cx('setting')}>
+                {/* 顯示語言選單 */}
                 <div className={cx('button', 'language')}>
-                    <img alt="" src={taiwan} onClick={() => setVisible(!visible)} />
+                    <img alt="" src={languageIcon} onClick={() => setVisible(!visible)} />
                     {visible && (
                         <ul className={cx('language_list')}>
-                            <li onClick={() => setVisible(!visible)}>
-                                <img alt="" src={english} />
-                                Enlish
-                            </li>
-                            <li>
-                                <img alt="" src={taiwan} />
-                                Taiwan
-                            </li>
+                            {LANG_LIST.map((item, index) => (
+                                <li onClick={() => changeLanguage(item.type)}>
+                                    <img alt="" src={item.icon} />
+                                    {item.name}
+                                </li>
+                            ))}
                         </ul>
                     )}
                 </div>

@@ -3,7 +3,12 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 // mui
 import DownloadingOutlinedIcon from '@mui/icons-material/DownloadingOutlined';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+// import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+
+import { useTranslation } from 'react-i18next';
+
+// utils
+// import { getCookie, setCookie } from '@/utils/cookie';
 
 // icon
 // import logo from '@/assets/images/icon-logo.svg';
@@ -14,11 +19,17 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(classes);
 
 const Menu = ({ menuList }) => {
+    const { t, i18n } = useTranslation();
     const navigate = useNavigate(); // Properly define navigate here
     const location = useLocation(); // This gives the current location
 
     const [currentPath, setCurrentPath] = useState('/main');
 
+    /**
+     * Handles the click event of a menu item.
+     * @param {string} key The key of the menu item.
+     * @param {string} path The path of the menu item.
+     */
     const clickMenu = (key, path) => {
         console.log(key, path);
         setCurrentPath(path);
@@ -47,7 +58,7 @@ const Menu = ({ menuList }) => {
                     <ul>
                         {menuList.map((item, index) => (
                             <li key={index}>
-                                <p className={cx('menu-name')}>{item.main}</p>
+                                <p className={cx('menu-name')}>{t(item.main)}</p>
                                 {item.children.map((item, idx) => (
                                     <div
                                         className={cx('menu-link', currentPath === item.path && 'menu_active')}
@@ -55,7 +66,7 @@ const Menu = ({ menuList }) => {
                                         key={idx}
                                     >
                                         <DownloadingOutlinedIcon />
-                                        <span>{item.name}</span>
+                                        <span>{t(item.name)}</span>
                                     </div>
                                 ))}
                             </li>

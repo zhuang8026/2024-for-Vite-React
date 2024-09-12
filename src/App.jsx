@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-route
 
 // mui
 import DownloadingOutlinedIcon from '@mui/icons-material/DownloadingOutlined';
+import { useTranslation } from 'react-i18next';
 
 // config
 import routes from '@/router/routes';
@@ -25,34 +26,37 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(classes);
 
 function App() {
+    const { t, i18n } = useTranslation(); // t: 用來翻譯
+                                          // i18n: 翻譯管理，可轉換語系 
+
     const [layouts, setLayouts] = useState([]);
     const [auth, setAuth] = useState(true);
     const [menuList, setMenuList] = useState([
         {
-            main: 'Dashboard',
+            main: 'menu.dashboard',
             children: [
                 {
-                    name: 'Overall information',
+                    name: 'menu.overall',
                     path: '/main',
                     icon: <DownloadingOutlinedIcon />
                 },
                 {
-                    name: 'Sensor Time Log',
+                    name: 'menu.sensor',
                     path: '/user/account',
                     icon: <DownloadingOutlinedIcon />
                 }
             ]
         },
         {
-            main: 'Equipment Management',
+            main: 'menu.equipment_management',
             children: [
                 {
-                    name: 'Equipment List',
+                    name: 'menu.equipment_list',
                     path: '/pageA',
                     icon: <DownloadingOutlinedIcon />
                 },
                 {
-                    name: 'Gateway Management',
+                    name: 'menu.event_management',
                     path: '/pageB',
                     icon: <DownloadingOutlinedIcon />
                 }

@@ -1,3 +1,5 @@
+@import '@/assets/scss/_variables';
+
 .nav-menu {
     width: 260px;
     height: 100%;
@@ -89,17 +91,19 @@
                     justify-content: flex-start;
                     padding-left: 12px;
                     margin-bottom: 2px;
+
+                    transition: 0.1s ease-in;
                     span {
                         padding: 12px;
                         color: #fff;
                     }
 
                     &:hover {
-                        background: #008cff6d;
+                        background: $iii_color;
                     }
                 }
                 .menu_active {
-                    background: #008cff;
+                    background: $iii_color_2;
                 }
             }
         }

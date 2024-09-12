@@ -5,13 +5,22 @@
     "menu": {
         "menu": "Menu",
         "dashboard": "Dashboard",
-        "overall": "Overall",
+        "overall": "Overall information",
+        "sensor": "Sensor Time Log",
         "equipment_management": "Equipment Management",
-        "device_log": "Device Log",
+        "equipment_list": "Equipment List",
         "event_management": "Event Management",
-        "event_log": "Event Log",
-        "gateway_management": "Gateway Management",
-        "gateway_list": "Gateway List",
         "user_logout": "Logout"
+    },
+    "home": {
+        "power_usage_tracking": "Power usage tracking",
+        "set_goals": "Set goals",
+        "public_electricity_desc": "Does not include community public electricity",
+        "electricity_consumption_accumulation": "Electricity consumption accumulation",
+        "month_electricity": "Cumulative electricity consumption this month",
+        "yesterday_electricity": "Yesterday's electricity consumption",
+        "before_yesterday_electricity": "Electricity consumption the day before yesterday",
+        "household_electricity_consumption_direction": "Household electricity consumption direction this month",
+        "television": "Television"
     }
 }

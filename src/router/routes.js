@@ -9,36 +9,36 @@ import Account from '@/view/User/Account';
 
 const routes = [
     {
-        main: 'Dashboard',
+        main: 'dashboard',
         path: '/main',
-        title: 'Overall information',
+        title: 'overall',
         component: Home,
         exact: true,
         authRequired: false,
         layouts: ['menu', 'footer', 'header']
     },
     {
-        main: 'Dashboard',
+        main: 'dashboard',
         path: '/user/account',
-        title: 'Sensor Time Log',
+        title: 'sensor',
         component: Account,
         exact: true,
         authRequired: false,
         layouts: ['menu', 'header']
     },
     {
-        main: 'Equipment Management',
+        main: 'equipment_management',
         path: '/pageA',
-        title: 'Equipment List',
+        title: 'equipment_list',
         component: PageA,
         exact: true,
         authRequired: false,
         layouts: ['menu', 'footer', 'header']
     },
     {
-        main: 'Equipment Management',
+        main: 'equipment_management',
         path: '/pageB',
-        title: 'Gateway Management',
+        title: 'event_management',
         component: PageB,
         exact: true,
         authRequired: false,
