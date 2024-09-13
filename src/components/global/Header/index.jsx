@@ -48,6 +48,7 @@ const Header = () => {
         main: '',
         child: ''
     });
+    const [isScrolled, setIsScrolled] = useState(false); // State for scroll detection
 
     // 切換語言並存入 cookie
     const changeLanguage = lng => {
@@ -56,6 +57,23 @@ const Header = () => {
         setCookie(COOKIE_NAME.LANG, lng);
         setLanguageIcon(LANG_ICON[lng]);
     };
+
+    // Add scroll event listener to change header background on scroll
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 5) {
+                // You can adjust the threshold
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     useEffect(() => {
         const pathObj = routes.find(item => item.path === pathname);
@@ -69,7 +87,7 @@ const Header = () => {
         setLanguageIcon(LANG_ICON[langIconName]);
     }, [pathname]);
     return (
-        <div className={cx('header')}>
+        <div className={cx('header', isScrolled && 'scrolled')}>
             <div className={cx('title')}>
                 <p>
                     {t(head.main)} / {t(head.child)}
@@ -83,7 +101,7 @@ const Header = () => {
                     {visible && (
                         <ul className={cx('language_list')}>
                             {LANG_LIST.map((item, index) => (
-                                <li onClick={() => changeLanguage(item.type)}>
+                                <li key={index} onClick={() => changeLanguage(item.type)}>
                                     <img alt="" src={item.icon} />
                                     {item.name}
                                 </li>

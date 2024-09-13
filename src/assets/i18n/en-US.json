@@ -20,6 +20,7 @@
         "month_electricity": "Cumulative electricity consumption this month",
         "yesterday_electricity": "Yesterday's electricity consumption",
         "before_yesterday_electricity": "Electricity consumption the day before yesterday",
+        "all_month_electricity": "Electricity consumption this month",
         "household_electricity_consumption_direction": "Household electricity consumption direction this month",
         "television": "Television"
     }

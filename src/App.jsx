@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-route
 
 // mui
 import DownloadingOutlinedIcon from '@mui/icons-material/DownloadingOutlined';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next'; // 翻譯
 
 // config
 import routes from '@/router/routes';
@@ -27,7 +27,7 @@ const cx = classNames.bind(classes);
 
 function App() {
     const { t, i18n } = useTranslation(); // t: 用來翻譯
-                                          // i18n: 翻譯管理，可轉換語系 
+    // i18n: 翻譯管理，可轉換語系
 
     const [layouts, setLayouts] = useState([]);
     const [auth, setAuth] = useState(true);
@@ -106,7 +106,7 @@ function App() {
 
                 {/* main */}
                 <Suspense fallback={<></>}>
-                    <Routes>
+                    <Routes location={location}>
                         {/* <Navigate> 不能直接放置在 <Routes> 的頂層下，它必須作為一個 <Route> 的 element 來使用。 */}
                         <Route path="/" element={<Navigate to="/main" replace />} />
 

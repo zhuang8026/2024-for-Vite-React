@@ -1,5 +1,8 @@
 @import '@/assets/scss/_variables';
 
+// svg
+@import '@/assets/scss/_svg-icon';
+
 .nav-menu {
     width: 260px;
     height: 100%;
@@ -95,8 +98,9 @@
                     transition: 0.1s ease-in;
                     span {
                         padding: 12px;
-                        color: #fff;
                     }
+
+                    @include svg_color();
 
                     &:hover {
                         background: $iii_color;

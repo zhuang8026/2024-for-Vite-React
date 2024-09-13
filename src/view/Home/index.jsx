@@ -6,6 +6,9 @@ import { useTranslation } from 'react-i18next';
 // mui
 import BorderColorTwoToneIcon from '@mui/icons-material/BorderColorTwoTone';
 
+// components
+import DoughnutChart from '@/components/ui/DoughnutChart';
+
 // css
 import classes from './style.module.scss';
 import classNames from 'classnames/bind';
@@ -36,28 +39,36 @@ const Home = () => {
             <div className={cx('block')}>
                 <div className={cx('target-box')}>
                     {t('home.month_electricity')}
-                    <div className={cx('target')}></div>
+                    <div className={cx('target')}>
+                        <DoughnutChart />
+                    </div>
                     <button type="button">
                         <BorderColorTwoToneIcon />
                     </button>
                 </div>
                 <div className={cx('target-box')}>
                     {t('home.yesterday_electricity')}
-                    <div className={cx('target')}></div>
+                    <div className={cx('target')}>
+                        <DoughnutChart />
+                    </div>
                     <button type="button">
                         <BorderColorTwoToneIcon />
                     </button>
                 </div>
                 <div className={cx('target-box')}>
                     {t('home.before_yesterday_electricity')}
-                    <div className={cx('target')}></div>
+                    <div className={cx('target')}>
+                        <DoughnutChart />
+                    </div>
                     <button type="button">
                         <BorderColorTwoToneIcon />
                     </button>
                 </div>
                 <div className={cx('target-box')}>
-                    {t('home.month_electricity')}
-                    <div className={cx('target')}></div>
+                    {t('home.all_month_electricity')}
+                    <div className={cx('target')}>
+                        <DoughnutChart />
+                    </div>
                     <button type="button">
                         <BorderColorTwoToneIcon />
                     </button>

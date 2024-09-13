@@ -1,5 +1,8 @@
 @import '@/assets/scss/_variables';
 
+// svg
+@import '@/assets/scss/_svg-icon';
+
 .home {
     width: calc(100%);
     border-radius: $fs-12;
@@ -21,6 +24,8 @@
             border-radius: $fs-12;
             padding: 18px;
             .target {
+                // width: 100%;
+                height: auto;
                 margin: 10px 0;
                 display: flex;
                 justify-content: space-between;
@@ -40,6 +45,8 @@
                 padding: 5px;
                 border-radius: 5px;
                 cursor: pointer;
+
+                @include svg_color();
             }
         }
     }
