@@ -88,6 +88,18 @@ function App() {
         getLayouts();
     }, [auth, pathname]); // pathname 变化时也调用 getLayouts
 
+    useEffect(() => {
+        // 查找当前路径的路由
+        const currentRoute = routes.find(route => route.path === pathname) || {};
+        console.log(currentRoute);
+        // 如果当前路径的路由有 `title` 属性，设置为页面标题
+        if (currentRoute.title) {
+            document.title = t(`menu.${currentRoute.title}`);
+        } else {
+            document.title = t('title.default'); // 设置默认标题
+        }
+    }, [pathname, t]);
+
     return (
         <div id={cx('app')}>
             {/* menu */}

@@ -1,10 +1,12 @@
 import React, { useState, Suspense, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 
+//翻譯
 import { useTranslation } from 'react-i18next';
 
 // mui
 import BorderColorTwoToneIcon from '@mui/icons-material/BorderColorTwoTone';
+import ErrorOutlineTwoToneIcon from '@mui/icons-material/ErrorOutlineTwoTone';
 
 // components
 import DoughnutChart from '@/components/ui/DoughnutChart';
@@ -37,40 +39,57 @@ const Home = () => {
 
             <h3>{t('home.electricity_consumption_accumulation')}</h3>
             <div className={cx('block')}>
+                {/* 本月累積 */}
                 <div className={cx('target-box')}>
                     {t('home.month_electricity')}
                     <div className={cx('target')}>
-                        <DoughnutChart />
+                        <DoughnutChart
+                            value={340.0} // 用電數度
+                            total={340.0} // 總用電數度
+                            compareValue={-2.0} // 比較數度
+                        />
                     </div>
                     <button type="button">
-                        <BorderColorTwoToneIcon />
+                        <ErrorOutlineTwoToneIcon />
                     </button>
                 </div>
+                {/* 昨日用電量 */}
                 <div className={cx('target-box')}>
                     {t('home.yesterday_electricity')}
                     <div className={cx('target')}>
-                        <DoughnutChart />
+                        <DoughnutChart
+                            value={5.0} // 用電數度
+                            total={340.0} // 總用電數度
+                        />
                     </div>
                     <button type="button">
-                        <BorderColorTwoToneIcon />
+                        <ErrorOutlineTwoToneIcon />
                     </button>
                 </div>
+                {/* 前天用電量 */}
                 <div className={cx('target-box')}>
                     {t('home.before_yesterday_electricity')}
                     <div className={cx('target')}>
-                        <DoughnutChart />
+                        <DoughnutChart
+                            value={50.0} // 用電數度
+                            total={340.0} // 總用電數度
+                        />
                     </div>
                     <button type="button">
-                        <BorderColorTwoToneIcon />
+                        <ErrorOutlineTwoToneIcon />
                     </button>
                 </div>
+                {/* 本月用電量 */}
                 <div className={cx('target-box')}>
                     {t('home.all_month_electricity')}
                     <div className={cx('target')}>
-                        <DoughnutChart />
+                        <DoughnutChart
+                            value={100.0} // 用電數度
+                            total={340.0} // 總用電數度
+                        />
                     </div>
                     <button type="button">
-                        <BorderColorTwoToneIcon />
+                        <ErrorOutlineTwoToneIcon />
                     </button>
                 </div>
             </div>
@@ -79,7 +98,7 @@ const Home = () => {
             <div className={cx('block')}>
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map((item, index) => (
                     <div className={cx('target-box')} key={index}>
-                        {t('home.television')}
+                        {t('machine.television')}
                         <div className={cx('target')}>
                             <div className={cx('target-item-number')}>
                                 <span>{item}</span> KWH
