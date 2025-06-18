@@ -6,7 +6,10 @@ export default defineConfig({
     base: `./`,
     plugins: [react()],
     resolve: {
-        alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }]
+        // alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
+        alias: {
+            '@': path.resolve(__dirname, './src')
+        }
         // alias: {
         //     '@': path.resolve(__dirname, 'src') // 將 '@' 映射到 'src' 目錄
         // }

@@ -6,7 +6,7 @@ import classes from './style.module.scss';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(classes);
 
-const Loading = () => {
+const Loading = ({ text = 'loading...' }) => {
     return (
         <div className={cx('loading')}>
             <div className={cx('loader', 'loader--style1')} title="0">
@@ -46,6 +46,7 @@ const Loading = () => {
                         />
                     </path>
                 </svg>
+                <p>{text}</p>
             </div>
         </div>
     );
